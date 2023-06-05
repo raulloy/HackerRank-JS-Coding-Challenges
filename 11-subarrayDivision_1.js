@@ -1,33 +1,19 @@
 const subarrayDivision = (s, d, m) => {
   let count = 0;
-
-  // Check if the total number of squares is less than the birth month
-  if (s.length < m) {
-    return count;
-  }
-  console.log('array length:', s.length);
-
   let sum = 0;
 
-  // Initialize the sum with the first m squares
-  for (let i = 0; i < m; i++) {
-    console.log(sum, s[i], (sum += s[i]));
-    sum += s[i];
+  for (let index = 0; index < m; index++) {
+    console.log('sum:', sum, 'sum+=s[i]:', (sum += s[index]));
   }
 
-  console.log('sum', sum);
-
-  // Check the first contiguous segment
   if (sum === d) {
     count++;
   }
 
-  // Slide the window over the remaining squares
   for (let i = m; i < s.length; i++) {
-    // Add the current square and subtract the square at the beginning of the window
+    // console.log((sum += s[i] - s[i - m]));
     sum += s[i] - s[i - m];
 
-    // Check if the sum matches the birth day
     if (sum === d) {
       count++;
     }
